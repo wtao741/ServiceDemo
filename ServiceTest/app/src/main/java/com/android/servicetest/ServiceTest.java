@@ -56,13 +56,13 @@ public class ServiceTest extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.e("tag",""+Build.VERSION.SDK_INT);
-        if (Build.VERSION.SDK_INT < 18) {
-            startForeground(GRAY_SERVICE_ID, new Notification());//API < 18 ，此方法能有效隐藏Notification上的图标
-        } else {
-            Intent innerIntent = new Intent(this, GrayInnerService.class);
-            startService(innerIntent);
-            startForeground(GRAY_SERVICE_ID, new Notification());
-        }
+//        if (Build.VERSION.SDK_INT < 18) {
+//            startForeground(GRAY_SERVICE_ID, new Notification());//API < 18 ，此方法能有效隐藏Notification上的图标
+//        } else {
+//            Intent innerIntent = new Intent(this, GrayInnerService.class);
+//            startService(innerIntent);
+//            startForeground(GRAY_SERVICE_ID, new Notification());
+//        }
 
 //        //发送唤醒广播来促使挂掉的UI进程重新启动起来
 //        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
