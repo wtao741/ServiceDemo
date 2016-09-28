@@ -6,9 +6,12 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,8 +31,32 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Intent intent = new Intent(this, ServiceTest.class);
+        final Intent intent = new Intent(this, ServiceTest.class);
         startService(intent);
+
+
+        ScreenListener l = new ScreenListener(this);
+        l.begin(new ScreenListener.ScreenStateListener() {
+
+            Intent mIntent;
+
+            @Override
+            public void onUserPresent() {
+                Log.e("onUserPresent", "onUserPresent");
+            }
+
+            @Override
+            public void onScreenOn() {
+                Log.e("tag", "MainActivity onScreenOn");
+            }
+
+            @Override
+            public void onScreenOff() {
+                mIntent = new Intent(MainActivity.this,OpenActivity.class);
+                startActivity(mIntent);
+                Log.e("tag", "MainActivity onScreenOff");
+            }
+        });
     }
 
     @Override
