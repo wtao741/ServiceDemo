@@ -28,7 +28,7 @@
         <service
             android:name=".ServiceTest$GrayInnerService"
             android:enabled="true"
-            android:exported="false"/>
+            android:exported="false"/>   <!-- 这个属性用于指示该服务是否能够被其他应用程序组件调用或跟它交互。如果设置为true，则能够被调用或交互，否则不能-->
 
         <receiver
             android:name=".WakeReceiver"
